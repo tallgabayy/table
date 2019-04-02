@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+            <html>
+            <head>
+
+                        
+            </head>
+
+            
+
+
+            <body style="background-image:url(https://hackeruapp.files.wordpress.com/2019/02/cropped-mobile.jpg)">                                
+            
+               
+                  
+          </p>
+
+                        
+                        
+             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+             <form onsubmit="return add();" id="myForm">
+            
+            
+             
+             
+
+             <p>  <button type="submit" > Add </button> </p>
+           
+            
+             
+                  <table border="4">
+                 
+         
+                <thead>
+                     <tr> 
+         
+                      <th style="background:yellow">ID:  <input type="number" id="idnumber" required/></th>
+                      <th style="background:lime">Title:  <input type="text" id="title" required/></th>
+                      <th style="background:yellow">Start Date: <input type="date" id="startD" required/></th>
+                      <th style="background:lime">End Date:<input type="date" id="endD" required/> </th>
+                      <th style="background:yellow"> 
+                        <select id="diffcultyLevel" required>
+                           <option value="Easy">Easy</option>
+                           <option value="Normal">Normal</option>
+                           <option value="Hard">Hard</option>
+                           
+                         </select>
+                         </th>
+                      <th style="background:lime">  <input type="checkbox" name="dualS" id="dualSemesters" value="dualSem"> Dual-Semesters<br> </th>
+                         
+                      
+
+                    
+                   </tr>
+                </thead >
+                
+              
+
+                <tbody id="body1">
+
+                </tbody>
+             </table>      
+             
+             <script>
+             
+             function Person(_id , _title , _startdate , _enddate , _difflev , _dual) {
+    this.id = _id
+    this.title = _title
+    this.startdate = _startdate
+    this.enddate = _enddate
+    this.difflev = _difflev
+    this.dual = _dual
+}
+function add() {
+    var id = $("#idnumber").val()
+    var title = $("#title").val()
+    var startdate = $("#startD").val()
+    var enddate = $("#endD").val()
+    var difflev = $("#diffcultyLevel option:selected").text()
+       var dual = $('#dualSemesters').is(':checked') 
+    var p = new Person(id , title , startdate , enddate , difflev , dual)
+
+  alert (`ID : ${id}\nCourse Title : ${title}\nStart Date : ${startdate}
+  \nEnd Date : ${enddate} 
+               \nDifficulty Level : ${difflev}
+               \nDual Semesters : ${dual}
+               
+               `);    
+   
+
+    addRow(p);
+	
+	return false;
+}
+
+
+
+function addRow(p)
+ {
+
+    $("#body1") .prepend (`<tr><td>${p.id}</td><td>${p.title}</td><td>${p.startdate}</td><td>${p.enddate}</td>
+    <td>${p.difflev}</td><td>${p.dual}</td></tr>`)
+
+}
+             
+
+
+
+             
+             </script>
+
+
+
+    
+</form>           
+         </body>
+           
+               </html>
